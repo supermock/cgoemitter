@@ -1,13 +1,13 @@
 # **CGOEmitter** (golang package)
 
-<center>
-  <img src="cgoemitter.png" alt="Logo" style="width: 40%">
-</center>
-<center>
+<p align="center">
+  <img src="cgoemitter.png" alt="Logo" style="width: 20%">
+</p>
+<p align="center">
 <img src="https://img.shields.io/badge/coverage-62.7%25-yellow.svg" alt="Coverage">
 <img src="https://img.shields.io/badge/golang-package-blue.svg" alt="Golang Package">
 <img src="https://img.shields.io/badge/license-MIT-orange.svg" alt="License">
-</center>
+</p>
 
 ## What is it for?
 The CGOEmitter package serves to obtain asynchronous **C** code response returns, facilitating the process of returning the data returned to the program in **GO**.
