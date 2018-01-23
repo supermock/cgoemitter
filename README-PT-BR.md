@@ -1,7 +1,7 @@
 # **CGOEmitter** (golang package)
 
 <p align="center">
-  <img src="cgoemitter.png" alt="Logo" style="width: 20%">
+  <img src="cgoemitter.png" alt="Logo" width="360">
 </p>
 <p align="center">
 <img src="https://img.shields.io/badge/coverage-62.7%25-yellow.svg" alt="Coverage">
