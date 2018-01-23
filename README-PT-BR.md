@@ -128,6 +128,9 @@ $ go run main.go
 - **GetListeners()** => Retorna todos os ouvintes de um evento.
 - **``parser``/CStructToGoStruct()** => Transporta os dados de uma estrutura recebida do C para uma estrutura no GO.
 
+## Go documentação
+- https://godoc.org/github.com/supermock/cgoemitter
+
 ## Contribuições
 Basta baixar o código realizar sua alteração e enviar um pull request explicando a finalidade se é um bug ou uma melhoria e etc... Após isto será analizado para ser aprovado.
 
