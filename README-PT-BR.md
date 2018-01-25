@@ -4,9 +4,10 @@
   <img src="cgoemitter.png" alt="Logo" width="360">
 </p>
 <p align="center">
-<img src="https://img.shields.io/badge/coverage-62.7%25-yellow.svg" alt="Coverage">
-<img src="https://img.shields.io/badge/golang-package-blue.svg" alt="Golang Package">
-<img src="https://img.shields.io/badge/license-MIT-orange.svg" alt="License">
+<a href="https://goreportcard.com/report/github.com/supermock/cgoemitter"><img src="https://goreportcard.com/badge/github.com/supermock/cgoemitter" alt="GoReport"></img></a>
+<a href="#"><img src="https://gocover.io/_badge/github.com/supermock/cgoemitter" alt="Coverage"></a>
+<a href="https://godoc.org/github.com/supermock/cgoemitter"><img src="https://godoc.org/github.com/supermock/cgoemitter?status.svg" alt="GoDoc"></img></a>
+<a href="https://github.com/supermock/cgoemitter/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-orange.svg" alt="License"></a>
 </p>
 
 ## Para que serve?

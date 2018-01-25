@@ -27,15 +27,15 @@ func loadListeners(eventName string, create bool) *Listeners {
 }
 
 //export emit
-func emit(event_name *C.char, cgoemitter_args *C.struct_cgoemitter_args_t) {
-	listeners := loadListeners(C.GoString(event_name), true)
+func emit(eventName *C.char, cgoEmitterArgs *C.struct_cgoemitter_args_t) {
+	listeners := loadListeners(C.GoString(eventName), true)
 
 	var args Arguments
 	sliceHeader := (*reflect.SliceHeader)(unsafe.Pointer(&args))
-	sliceHeader.Cap = int(cgoemitter_args.args_cap)
-	sliceHeader.Len = int(cgoemitter_args.args_len)
-	sliceHeader.Data = uintptr(*cgoemitter_args.args)
-	defer C.free(unsafe.Pointer(cgoemitter_args.args))
+	sliceHeader.Cap = int(cgoEmitterArgs.args_cap)
+	sliceHeader.Len = int(cgoEmitterArgs.args_len)
+	sliceHeader.Data = uintptr(*cgoEmitterArgs.args)
+	defer C.free(unsafe.Pointer(cgoEmitterArgs.args))
 	defer args.free()
 
 	for _, listener := range *listeners {
