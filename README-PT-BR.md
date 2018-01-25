@@ -119,8 +119,6 @@ func main() {
 $ go run main.go
 ```
 
-### Projeto com exemplo de uso do pacote: https://github.com/supermock/cgoemitter-demo
-
 ## Métodos suportados:
 - **On()** => Adiciona um novo ouvinte ao evento.
 - **Off()** => Remove um ouvinte existente no evento.
@@ -128,8 +126,15 @@ $ go run main.go
 - **GetListeners()** => Retorna todos os ouvintes de um evento.
 - **``parser``/CStructToGoStruct()** => Transporta os dados de uma estrutura recebida do C para uma estrutura no GO.
 
+### Projeto com exemplo de uso do pacote:
+- https://github.com/supermock/cgoemitter-demo
+
 ## Go documentação
 - https://godoc.org/github.com/supermock/cgoemitter
+
+## Roadmap
+- Middleware para parsear o retorno dos dados (Arguments) do listener de modo que retorne na tipagem do golang.
+- Adicionar novas conversões dos tipos do C para o GO no Arguments.
 
 ## Contribuições
 Basta baixar o código realizar sua alteração e enviar um pull request explicando a finalidade se é um bug ou uma melhoria e etc... Após isto será analizado para ser aprovado.
