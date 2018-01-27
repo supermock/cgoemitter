@@ -136,6 +136,7 @@ $ go run main.go
 ## Roadmap
 - Middleware to parse the listener's Arguments so that it returns in golang typing.
 - Add new conversions of types from C to GO in Arguments.
+- Add new treatments from C types to the GO in the CStructToGoStruct method
 
 ## Read in another language
 [Clique aqui e leia em português](https://github.com/supermock/cgoemitter/blob/master/README-PT-BR.md)

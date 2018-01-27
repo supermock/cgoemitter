@@ -136,6 +136,7 @@ $ go run main.go
 ## Roadmap
 - Middleware para parsear o retorno dos dados (Arguments) do listener de modo que retorne na tipagem do golang.
 - Adicionar novas conversões dos tipos do C para o GO no Arguments.
+- Adicionar novos tratamentos dos tipos do C para o GO no CStructToGoStruct método.
 
 ## Contribuições
 Basta baixar o código realizar sua alteração e enviar um pull request explicando a finalidade se é um bug ou uma melhoria e etc... Após isto será analizado para ser aprovado.
