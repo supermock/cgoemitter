@@ -139,7 +139,7 @@ $ go run main.go
 - Adicionar novos tratamentos dos tipos do C para o GO no CStructToGoStruct método.
 
 ## Contribuições
-Basta baixar o código realizar sua alteração e enviar um pull request explicando a finalidade se é um bug ou uma melhoria e etc... Após isto será analizado para ser aprovado.
+Basta baixar o código realizar sua alteração e enviar um pull request explicando a finalidade se é um bug ou uma melhoria e etc... Após isto será analizado para ser aprovado. Observação: Caso seja uma grande alteração, abra uma issue explicando o que será feito para que você não perca seu precioso tempo desenvolvendo algo que não será utilizado. Sinta-se em casa!
 
 ## Licença 
 MIT

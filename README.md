@@ -142,7 +142,7 @@ $ go run main.go
 [Clique aqui e leia em português](https://github.com/supermock/cgoemitter/blob/master/README-PT-BR.md)
 
 ## Contributions
-Just download the code make your change and send a pull request explaining the purpose if it is a bug or an improvement and etc ... After this will be analyzed to be approved.
+Just download the code make your change and send a pull request explaining the purpose if it is a bug or an improvement and etc... After this will be analyzed to be approved. Note: If it is a major change, open a issue explaining what will be done so you do not waste your precious time developing something that will not be used. Make yourself at home!
 
 ## License 
 MIT
