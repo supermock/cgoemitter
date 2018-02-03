@@ -7,11 +7,17 @@ package cgoemitter
 import "C"
 import (
 	"errors"
+	"fmt"
 	"reflect"
 	"unsafe"
 )
 
 var events *Events
+
+var (
+	//ErrUnknownEvent | This event does not exist
+	ErrUnknownEvent = errors.New("This event does not exist")
+)
 
 func init() {
 	eventsList := make(Events, 0)
@@ -26,9 +32,15 @@ func loadListeners(eventName string, create bool) *Listeners {
 	return listeners
 }
 
+func dispatchEvent(listeners *Listeners, args Arguments) {
+	for _, listener := range *listeners {
+		(*listener)(args)
+	}
+}
+
 //export emit
 func emit(eventName *C.char, cgoEmitterArgs *C.struct_cgoemitter_args_t) {
-	listeners := loadListeners(C.GoString(eventName), true)
+	listeners := loadListeners(C.GoString(eventName), false)
 
 	var args Arguments
 	sliceHeader := (*reflect.SliceHeader)(unsafe.Pointer(&args))
@@ -38,8 +50,20 @@ func emit(eventName *C.char, cgoEmitterArgs *C.struct_cgoemitter_args_t) {
 	defer C.free(unsafe.Pointer(cgoEmitterArgs.args))
 	defer args.free()
 
-	for _, listener := range *listeners {
-		(*listener)(args)
+	if listeners != nil {
+		dispatchEvent(listeners, args)
+	} else {
+		listeners = loadListeners("cgoemitter-warnings", false)
+
+		if listeners != nil {
+			warningMessage := unsafe.Pointer(C.CString(fmt.Sprintf("The '%s' event was triggered by C, but there are no handlers", C.GoString(eventName))))
+			defer C.free(warningMessage)
+
+			warningArgs := make(Arguments, 0, 1)
+			warningArgs = append(warningArgs, warningMessage)
+
+			dispatchEvent(listeners, warningArgs)
+		}
 	}
 }
 
@@ -49,11 +73,15 @@ func On(eventName string, listener *ListenerFunc) {
 	listeners.AddListener(listener)
 }
 
-//Off | Removes a listener from the event
+//Off | Removes a listener from the event or the event itself if the listener number equals zero
 func Off(eventName string, listener *ListenerFunc) {
 	listeners := loadListeners(eventName, false)
 	if listeners != nil {
 		listeners.RemoveListener(listener)
+
+		if len(*listeners) == 0 {
+			events.RemoveEvent(eventName)
+		}
 	}
 }
 
@@ -68,5 +96,5 @@ func GetListeners(eventName string) (Listeners, error) {
 	if listeners != nil {
 		return *listeners, nil
 	}
-	return Listeners{}, errors.New("This event does not exist")
+	return Listeners{}, ErrUnknownEvent
 }

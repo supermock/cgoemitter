@@ -101,16 +101,24 @@ package main
 
 import (
   "fmt"
+  "sync"
+
   "github.com/supermock/cgoemitter"
   "github.com/user/packagename/x"
 )
 
 func main() {
+  var wg sync.WaitGroup
+  wg.Add(1)
+
   cgoemitter.On("message", cgoemitter.NewListener(func(args cgoemitter.Arguments) {
     fmt.Printf("Receveid message: %s\n", args.String(0))
+    wg.Done()
   }))
 
   x.SayMessage()
+
+  wg.Wait()
 }
 ```
 
@@ -118,6 +126,17 @@ func main() {
 
 ```sh
 $ go run main.go
+```
+
+## Evento de avisos
+Estes avisos te ajudam a identificar problemas na sua implementação, como por exemplo eventos disparados sem manipuladores.
+
+Exemplo:
+
+```go
+cgoemitter.On("cgoemitter-warnings", cgoemitter.NewListener(func(args cgoemitter.Arguments) {
+  fmt.Println("[WARNING]", args.String(0))
+}))
 ```
 
 ## Métodos suportados:

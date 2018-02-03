@@ -26,14 +26,16 @@ func TestOn(t *testing.T) {
 
 func TestOff(t *testing.T) {
 	for _, event := range eventsList {
-		for _, listener := range event.listeners {
-			cgoemitter.Off(event.eventName, listener)
+		for i, listener := range event.listeners {
+			if i < len(event.listeners)-1 {
+				cgoemitter.Off(event.eventName, listener)
+			}
 		}
 
 		if listeners, err := cgoemitter.GetListeners(event.eventName); err != nil {
 			t.Errorf("cgoemitter.GetListeners() was incorrect, got: %v, want: %v.", err, nil)
 		} else {
-			if len(listeners) != 0 {
+			if len(listeners) != 1 {
 				t.Errorf("cgoemitter.GetListeners() was incorrect, got: %d, want: %d.", len(listeners), 0)
 			}
 		}
