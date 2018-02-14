@@ -5,13 +5,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- Once method that is fired once, and is removed.
 
 ## [1.1.0] - 2018-02-03T04:29:02Z
 ### Added
 - Event with CGOEmitter operating warnings.
 - Documentation about the use of the warning event.
 
-#### Changed
+### Changed
 - Event removal when listeners equal to 0.
 
 ## 1.0.0 - 2018-01-23T19:59:01Z

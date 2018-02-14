@@ -142,9 +142,23 @@ cgoemitter.On("cgoemitter-warnings", cgoemitter.NewListener(func(args cgoemitter
 ## Supported Methods:
 - **On()** => Add a new listener to the event.
 - **Off()** => Removes an existing listener in the event.
+- **Once()** => Add a new listener to the event with just one shot.
 - **NewListener()** => Creates a new listener.
 - **GetListeners()** => Returns all listeners to an event.
 - **``parser``/CStructToGoStruct()** => Transports data from a structure received from C to a structure in the GO.
+
+## CGO Security (go version >= 1.9.4)
+From this version onwards a security measure was applied when using CGO, stay inside so you do not have problems.
+
+For more details see: https://github.com/golang/go/issues/23672
+
+If you have a problem compiling on account of an invalid flag warning. In the commands below, you allow the use of any flag, just for console session. (Not recommended, only for trusted code)
+
+```sh
+$ export CGO_CFLAGS_ALLOW='^.*\S'
+$ export CGO_LDFLAGS_ALLOW='^.*\S'
+$ go run main.go
+```
 
 ## Project with example of package usage:
 - https://github.com/supermock/cgoemitter-demo
@@ -153,7 +167,6 @@ cgoemitter.On("cgoemitter-warnings", cgoemitter.NewListener(func(args cgoemitter
 - https://godoc.org/github.com/supermock/cgoemitter
 
 ## Roadmap
-- Middleware to parse the listener's Arguments so that it returns in golang typing.
 - Add new conversions of types from C to GO in Arguments.
 - Add new treatments from C types to the GO in the CStructToGoStruct method
 

@@ -73,6 +73,18 @@ func On(eventName string, listener *ListenerFunc) {
 	listeners.AddListener(listener)
 }
 
+//Once | Adds a new event if it does not exist, and also adds a new listener with only one execution
+func Once(eventName string, listener *ListenerFunc) {
+	var tmpListener *ListenerFunc
+
+	tmpListener = NewListener(func(args Arguments) {
+		Off(eventName, tmpListener)
+		(*listener)(args)
+	})
+
+	On(eventName, tmpListener)
+}
+
 //Off | Removes a listener from the event or the event itself if the listener number equals zero
 func Off(eventName string, listener *ListenerFunc) {
 	listeners := loadListeners(eventName, false)
