@@ -150,9 +150,11 @@ cgoemitter.On("cgoemitter-warnings", cgoemitter.NewListener(func(args cgoemitter
 ## CGO Security (go version >= 1.9.4)
 From this version onwards a security measure was applied when using CGO, stay inside so you do not have problems.
 
-For more details see: https://github.com/golang/go/issues/23672
+For more details see: 
+- https://github.com/golang/go/issues/23672
+- https://github.com/golang/go/wiki/InvalidFlag
 
-If you have a problem compiling on account of an invalid flag warning. In the commands below, you allow the use of any flag, just for console session. (Not recommended, only for trusted code)
+If you have a problem compiling on account of an `invalid flag` warning. In the commands below, you allow the use of any flag, just for console session. (Not recommended, only for trusted code)
 
 ```sh
 $ export CGO_CFLAGS_ALLOW='^.*\S'
